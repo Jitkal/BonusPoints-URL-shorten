@@ -1,7 +1,12 @@
 import React from 'react';
 import '../styles/ShortenURL.css'
+import ResultURL from "./ResultURL.jsx";
 
-const ShortenURL=()=> {
+const makeShorten = (longURL) => {
+    console.log('Make ShortenURL',longURL);
+}
+
+const ShortenURL=(props)=> {
     return (
         <div className='Card'>
             <div className='Container'>
@@ -17,15 +22,19 @@ const ShortenURL=()=> {
                         <div>Enter your URL</div>
                         <input
                             type="text"
+                            value={props.longUrl}
+                            onChange={(e) => props.setLongUrl(e.target.value)}
                             placeholder="https://example.com/very/long/url"
                         />
                     </div>
 
 
-                    <button type="submit">
+                    <button type="submit" onClick={()=>makeShorten(props.longUrl)}>
                         make it shorter
                     </button>
                 </div>
+
+                <ResultURL shortURL={'tryshort'}/>
             </div>
         </div>
     )
