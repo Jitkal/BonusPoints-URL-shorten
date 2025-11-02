@@ -1,0 +1,23 @@
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: hsl(0, 0%, 20%);
+    border-bottom: 2px solid rgb(96, 96, 96)
+}
+
+.NavContainer{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.NavLeft{
+    text-transform: uppercase;
+    font-weight: bold;
+}
