@@ -53,11 +53,13 @@ const ResultURL=(props)=> {
                 <div className='ResultURL'>
                     <div>
                         {
-                            realURL ?
-                                <a href={realURL.longURL}>
-                                    {props.shortURL}
-                                </a>
-                                : <div/>
+                            props.shortURL ?
+                                realURL ?
+                                    <a href={realURL.longURL}>
+                                        {props.shortURL}
+                                    </a>
+                                : <span className="loader"/>
+                            :<div/>
                         }
                     </div>
                     <button onClick={() => copyText(props.shortURL)}>
