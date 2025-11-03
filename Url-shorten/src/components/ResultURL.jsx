@@ -1,18 +1,64 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import '../styles/ResultURL.css'
+import db from "../firebase.js";
+import { collection, query, where,getDocs } from "firebase/firestore";
+
 
 const copyText = (text) => {
     navigator.clipboard.writeText(text);
 }
 
+const findLink=async (shortURL)=>{
+    if (!shortURL) return;
+
+    const q = query(collection(db, "urls"), where("shortURL", "==", shortURL));
+
+    try {
+        const querySnapshot = await getDocs(q);
+        if (querySnapshot.empty) {
+            console.log("No matching URL found.");
+            return null;
+        }
+
+        querySnapshot.forEach((doc) => {
+            console.log('Found URL:', doc.data());
+        });
+
+        // If you expect only one match, return the first document
+        return querySnapshot.docs[0].data();
+    } catch (error) {
+        console.error("Error fetching URL:", error);
+        return null;
+    }
+}
+
 const ResultURL=(props)=> {
+    const [realURL, setRealURL] = useState(null);
+
+    useEffect(() => {
+        const fetchURL = async () => {
+            if (props.shortURL) {
+                const result = await findLink(props.shortURL);
+                setRealURL(result);
+                // console.log("Found URL:", result);
+            }
+        };
+
+        fetchURL();
+    }, [props.shortURL]);
     return (
         <div>
             <div className='InputWrapper'>
                 <div>Your short URL</div>
                 <div className='ResultURL'>
                     <div>
-                        {props.shortURL}
+                        {
+                            realURL ?
+                                <a href={realURL.longURL}>
+                                    {props.shortURL}
+                                </a>
+                                : <div/>
+                        }
                     </div>
                     <button onClick={() => copyText(props.shortURL)}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
