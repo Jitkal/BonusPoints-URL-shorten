@@ -19,7 +19,12 @@ const findLink=async (shortURL)=>{
         });
 
         // If you expect only one match, return the first document
-        return querySnapshot.docs[0].data();
+        // return querySnapshot.docs[0].data();
+        const docSnap = querySnapshot.docs[0];
+        return {
+            id: docSnap.id,       // 🔹 Firestore document ID
+            ...docSnap.data()     // all other fields: longURL, countClick, created, etc.
+        }
     } catch (error) {
         console.error("Error fetching URL:", error);
         return null;

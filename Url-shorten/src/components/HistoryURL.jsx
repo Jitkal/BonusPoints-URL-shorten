@@ -5,14 +5,14 @@ import '../styles/HistoryURL.css'
 
     const [countCopy, setCountCopy] = useState(0)
     console.log('item', item)
-    useEffect(()=>{
-        try{
-            console.log('increase count',countCopy)
-
-        }catch(error){
-            console.log('error to increase count',error);
-        }
-    },[countCopy])
+    // useEffect(()=>{
+    //     try{
+    //         console.log('increase count',countCopy)
+    //
+    //     }catch(error){
+    //         console.log('error to increase count',error);
+    //     }
+    // },[countCopy])
   return (
       <tr>
           <td>
@@ -21,7 +21,7 @@ import '../styles/HistoryURL.css'
                       {item.longURL}
                   </a>
 
-                  <button className='Copy' onClick={()=>{navigator.clipboard.writeText(item.longURL);setCountCopy(countCopy+1)}}>
+                  <button className='Copy' onClick={()=>{navigator.clipboard.writeText(item.longURL);}}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                            className="bi bi-copy" viewBox="0 0 16 16">
                           <path fillRule="evenodd"
@@ -36,7 +36,7 @@ import '../styles/HistoryURL.css'
                       {item.shortURL}
                   </a>
 
-                  <button className='Copy' onClick={()=>{navigator.clipboard.writeText(item.shortURL);setCountCopy(countCopy+1)}}>
+                  <button className='Copy' onClick={()=>{navigator.clipboard.writeText(item.shortURL);}}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                            className="bi bi-copy" viewBox="0 0 16 16">
                           <path fillRule="evenodd"
@@ -45,7 +45,7 @@ import '../styles/HistoryURL.css'
                   </button>
               </div>
           </td>
-          <td className='ClicksCount'>{item.clicks || 0} {countCopy}</td>
+          <td className='ClicksCount'>{item.countClick || 0}</td>
           <td className='CreateDate'>{new Date(item.created).toLocaleString()}</td>
       </tr>
   );
