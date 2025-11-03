@@ -36,7 +36,7 @@ const getBaseURL = (longURL) => {
             await addDoc(collection(db, "urls"), newSave);
 
             const saved=JSON.parse(localStorage.getItem('history')) || []
-            saved.push(newSave);
+            saved.push({shortURL: shortURL});
             localStorage.setItem('history', JSON.stringify(saved));
             setResult(shortURL)
         }catch (error) {

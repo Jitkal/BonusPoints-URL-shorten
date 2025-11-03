@@ -1,6 +1,6 @@
 import React, { useEffect,useRef  } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import findLink from "../services/service.js";
+import {findLink} from "../services/service.js";
 import db from "../firebase.js";
 import {doc, updateDoc, increment, query, collection, where} from "firebase/firestore";
 

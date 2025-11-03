@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import '../styles/HistoryURL.css'
 import HistoryURL from "../components/HistoryURL.jsx";
+import {loadHistory} from "../services/service.js";
 
 const History = () => {
 
@@ -19,9 +20,16 @@ const History = () => {
 
     useEffect(()=>{
         try{
-            setHistory(JSON.parse(localStorage.getItem('history')) || []);
-            console.log('history',history);
+            const fullHistory=async ()=>{
+                const load=await loadHistory(JSON.parse(localStorage.getItem('history')) || [])
+                setHistory(load);
 
+                return load;
+            }
+            // setHistory(JSON.parse(localStorage.getItem('history')) || []);
+            console.log('history',history);
+            // console.log('fullHistory',fullHistory());
+            fullHistory()
         }catch(error){
             console.log('error to get history',error);
             return [];

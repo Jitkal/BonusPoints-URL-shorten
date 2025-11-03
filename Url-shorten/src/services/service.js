@@ -2,7 +2,7 @@ import db from "../firebase.js";
 import { collection, query, where,getDocs } from "firebase/firestore";
 
 
-const findLink=async (shortURL)=>{
+export const findLink=async (shortURL)=>{
     if (!shortURL) return;
 
     const q = query(collection(db, "urls"), where("shortURL", "==", shortURL));
@@ -18,12 +18,10 @@ const findLink=async (shortURL)=>{
             console.log('Found URL:', doc.data());
         });
 
-        // If you expect only one match, return the first document
-        // return querySnapshot.docs[0].data();
         const docSnap = querySnapshot.docs[0];
         return {
-            id: docSnap.id,       // 🔹 Firestore document ID
-            ...docSnap.data()     // all other fields: longURL, countClick, created, etc.
+            id: docSnap.id,
+            ...docSnap.data()
         }
     } catch (error) {
         console.error("Error fetching URL:", error);
@@ -31,5 +29,17 @@ const findLink=async (shortURL)=>{
     }
 }
 
+export const loadHistory=async (history)=>{
+    const fullHistory=[]
+    if (history){
+        for (const shortURL of history) {
+            const dataHis=await findLink(shortURL.shortURL)
+            fullHistory.push(dataHis)
+        }
+    }
+    return fullHistory
 
-export default findLink;
+}
+
+
+// export default {findLink, loadHistory};
