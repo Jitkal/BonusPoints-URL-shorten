@@ -8,9 +8,7 @@ const Home=()=> {
     const [longUrl, setLongUrl] = useState('no')
     return (
         <div>
-            <Navbar/>
             <ShortenURL longUrl={longUrl} setLongUrl={setLongUrl}/>
-            <History/>
         </div>
     );
 }
