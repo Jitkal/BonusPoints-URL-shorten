@@ -38,7 +38,6 @@ const History = () => {
                                   <th>Short URL</th>
                                   <th>Copy Clicks</th>
                                   <th>Created</th>
-                                  <th>Action</th>
                               </tr>
                           </thead>
                           <tbody>
