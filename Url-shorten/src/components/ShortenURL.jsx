@@ -3,24 +3,26 @@ import React, { useState, useEffect } from 'react'
 import '../styles/ShortenURL.css'
 import ResultURL from "./ResultURL.jsx";
 import axios from "axios";
+import { collection, addDoc } from "firebase/firestore";
+import db from "../firebase.js";
 
 
 const makeShorten = async (longURL) => {
     try {
-        // const res = await axios(`https://api.shrtco.de/v2/shorten?url=${longURL}`);
-        console.log('Make ShortenURL',longURL);
         const newSave = {
             longURL: longURL,
             shortURL: 'shorten', // replace with res.data.result.short_link if using API
+            countClick: 0,
             created: Date.now(),
         };
+        await addDoc(collection(db, "urls"), newSave);
 
         const saved=JSON.parse(localStorage.getItem('history')) || []
         saved.push(newSave);
         localStorage.setItem('history', JSON.stringify(saved));
 
     }catch (error) {
-        console.log('fetch short url error',error);
+        console.log('firebase error',error);
     }
 
 }
