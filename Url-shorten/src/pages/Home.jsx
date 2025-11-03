@@ -9,6 +9,7 @@ const Home=()=> {
     return (
         <div>
             <ShortenURL longUrl={longUrl} setLongUrl={setLongUrl}/>
+            <History/>
         </div>
     );
 }

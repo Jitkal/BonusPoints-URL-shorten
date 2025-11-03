@@ -1,9 +1,33 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import '../styles/HistoryURL.css'
 
 const HistoryURL = () => {
+
+    const [history, setHistory] = useState(()=>{
+        try{
+            const saved=JSON.parse(localStorage.getItem('history')|| [])
+            console.log('saved',saved);
+            return saved;
+
+        }catch(error){
+            console.log('error to get history',error);
+            return [];
+        }
+
+    });
+
+    useEffect(()=>{
+        try{
+            setHistory(JSON.parse(localStorage.getItem('history')) || []);
+            console.log('history',history);
+
+        }catch(error){
+            console.log('error to get history',error);
+            return [];
+        }
+    }, [])
   return (
-          <div>
+          <div className='HistoryURL'>
               <h1>URL History</h1>
                   <div className='TableContainer'>
                       <table>
@@ -17,33 +41,17 @@ const HistoryURL = () => {
                               </tr>
                           </thead>
                           <tbody>
-                                  <tr>
-                                      <td>
-                                          <div className='UrlText'>
-                                              url
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div className='UrlText ShortLink'>
-                                              short
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div className='ClicksCount'>
-                                              Clicks
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div className='CreateDate'>
-                                              create day
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div className='Copy'>
-                                              copy
-                                          </div>
-                                      </td>
-                                  </tr>
+                                {history && history.map((item, index) => (
+                                      <tr key={index}>
+                                          <td className='UrlText'>{item.longURL}</td>
+                                          <td className='UrlText ShortLink'>{item.shortURL}</td>
+                                          <td className='ClicksCount'>{item.clicks || 0}</td>
+                                          <td className='CreateDate'>{new Date(item.created).toLocaleString()}</td>
+                                          <td>
+                                              <button className='Copy'>Copy</button>
+                                          </td>
+                                      </tr>
+                                ))}
                           </tbody>
                       </table>
                   </div>

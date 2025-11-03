@@ -15,10 +15,12 @@ function App() {
   return (
       <BrowserRouter>
           <Navbar/>
-          <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/history" element={<HistoryURL />} />
-          </Routes>
+          <div id='Home'>
+              <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/history" element={<HistoryURL />} />
+              </Routes>
+          </div>
 
       </BrowserRouter>
   )

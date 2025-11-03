@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Nav.css'
 
 const Navbar=()=> {
@@ -8,9 +9,8 @@ const Navbar=()=> {
                 <div className='NavLeft'>         
                     Bonus Points
                 </div>
-
                 <div className='NavRight'>
-                    History
+                    <Link to="/history">History</Link>
                 </div>
 
             </div>
