@@ -1,9 +1,17 @@
 import React from 'react';
 import '../styles/ShortenURL.css'
 import ResultURL from "./ResultURL.jsx";
+import axios from "axios";
 
-const makeShorten = (longURL) => {
-    console.log('Make ShortenURL',longURL);
+const makeShorten = async (longURL) => {
+    try {
+        // const res = await axios(`https://api.shrtco.de/v2/shorten?url=${longURL}`);
+        console.log('Make ShortenURL',longURL);
+        // console.log('res ShortenURL',res);
+    }catch (error) {
+        console.log('fetch short url error',error);
+    }
+
 }
 
 const ShortenURL=(props)=> {
@@ -33,7 +41,7 @@ const ShortenURL=(props)=> {
                         make it shorter
                     </button>
                 </div>
-
+            
                 <ResultURL shortURL={'tryshort'}/>
             </div>
         </div>
