@@ -39,7 +39,16 @@ th{
 td{
     padding: 0.5rem 1.5rem;
 }
-.UrlText:hover {
+.UrlText a{
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    cursor: pointer;
+}
+.UrlText a:hover {
     color: #ffed4e;
     text-decoration: underline;
+}
+
+.Clear{
+    text-transform: uppercase;
 }

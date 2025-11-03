@@ -5,7 +5,8 @@ import './styles/App.css'
 import Home from './pages/Home'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Navbar from './components/Navbar'
-import HistoryURL from "./components/HistoryURL.jsx";
+// import HistoryURL from "./components/HistoryURL.jsx";
+import History from "./pages/History.jsx";
 
 
 
@@ -18,7 +19,7 @@ function App() {
           <div id='Home'>
               <Routes>
                   <Route path="/" element={<Home />} />
-                  <Route path="/history" element={<HistoryURL />} />
+                  <Route path="/history" element={<History />} />
               </Routes>
           </div>
 
