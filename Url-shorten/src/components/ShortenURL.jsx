@@ -17,7 +17,7 @@ const generateShortCode = (length = 6) => {
 const getBaseURL = (longURL) => {
     try {
         const url = new URL(longURL);
-        return `${url.protocol}//${url.hostname}`;
+            return `http://localhost:5173/shortURL/${url.hostname}`;
     } catch (e) {
         console.error("Invalid URL:", e);
         return '';
