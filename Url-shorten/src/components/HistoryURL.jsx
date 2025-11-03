@@ -55,6 +55,8 @@ const HistoryURL = () => {
                           </tbody>
                       </table>
                   </div>
+              <button className='Clear' onClick={()=>{localStorage.removeItem('history'); setHistory([])}}>clear history</button>
+
           </div>
   );
 };
