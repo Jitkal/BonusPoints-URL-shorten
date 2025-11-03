@@ -8,7 +8,6 @@ const History = () => {
     const [history, setHistory] = useState(()=>{
         try{
             const saved=JSON.parse(localStorage.getItem('history')|| [])
-            console.log('saved',saved);
             return saved;
 
         }catch(error){
@@ -27,7 +26,6 @@ const History = () => {
                 return load;
             }
             // setHistory(JSON.parse(localStorage.getItem('history')) || []);
-            console.log('history',history);
             // console.log('fullHistory',fullHistory());
             fullHistory()
         }catch(error){

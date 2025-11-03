@@ -6,8 +6,10 @@ const Navbar=()=> {
     return (
         <nav>
             <div className='NavContainer'>
-                <div className='NavLeft'>         
-                    Bonus Points
+                <div className='NavLeft'>
+                    <Link to="/" className='NavLeft'>Bonus Points</Link>
+
+
                 </div>
                 <div className='NavRight'>
                     <Link to="/history">History</Link>

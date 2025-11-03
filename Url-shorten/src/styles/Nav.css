@@ -21,6 +21,11 @@ nav{
     font-weight: bold;
 }
 
+.NavLeft:hover{
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+}
+
 .NavRight a {
     display: flex;
     align-items: center;

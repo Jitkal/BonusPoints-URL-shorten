@@ -13,9 +13,8 @@ const LinkTo = () => {
         hasRun.current = true;
         const fetchAndRedirect = async ()=> {
             try {
-                console.log(`http://localhost:5173${location.pathname}`)
+                // console.log(`http://localhost:5173${location.pathname}`)
                 const link= await findLink(`http://localhost:5173${location.pathname}`);
-                console.log('longURL',link.id);
 
                 const docRef = doc(db, "urls", link.id);
                 await updateDoc(docRef, { countClick: increment(1) });

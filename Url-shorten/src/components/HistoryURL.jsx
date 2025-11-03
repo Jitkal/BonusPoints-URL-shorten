@@ -3,16 +3,6 @@ import '../styles/HistoryURL.css'
 
     const HistoryURL = ({item}) => {
 
-    const [countCopy, setCountCopy] = useState(0)
-    console.log('item', item)
-    // useEffect(()=>{
-    //     try{
-    //         console.log('increase count',countCopy)
-    //
-    //     }catch(error){
-    //         console.log('error to increase count',error);
-    //     }
-    // },[countCopy])
 
   return (
       <tr>
