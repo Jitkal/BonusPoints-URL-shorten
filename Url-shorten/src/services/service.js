@@ -14,10 +14,6 @@ export const findLink=async (shortURL)=>{
             return null;
         }
 
-        // querySnapshot.forEach((doc) => {
-        //     console.log('Found URL:', doc.data());
-        // });
-
         const docSnap = querySnapshot.docs[0];
         return {
             id: docSnap.id,

@@ -1,8 +1,8 @@
 import React, { useEffect,useRef  } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import {findLink} from "../services/service.js";
 import db from "../firebase.js";
-import {doc, updateDoc, increment, query, collection, where} from "firebase/firestore";
+import {doc, updateDoc, increment} from "firebase/firestore";
 import '../styles/LinkTo.css'
 
 const LinkTo = () => {

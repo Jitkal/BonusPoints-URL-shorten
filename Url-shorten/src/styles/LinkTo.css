@@ -1,36 +1,81 @@
-#link-to{
+#link-to {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
+    background: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
 }
+
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
 .LinkToLoader {
     font-size: 120px;
     display: inline-block;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    color: #263238;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: var(--bg-tertiary);
     box-sizing: border-box;
-    text-shadow: 0 0 2px #FFF, 0 0 1px #FFF, 0 0 1px #FFF;
-    letter-spacing: 2px;
+    text-shadow:
+        0 0 20px var(--accent-glow),
+        0 0 40px var(--accent-glow),
+        0 0 2px var(--primary-light);
+    letter-spacing: 6px;
     position: relative;
+    z-index: 1;
 }
+
+@media (max-width: 768px) {
+    .LinkToLoader {
+        font-size: 60px;
+        letter-spacing: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .LinkToLoader {
+        font-size: 40px;
+        letter-spacing: 2px;
+    }
+}
+
 .LinkToLoader::after {
     content: 'Loading';
     position: absolute;
     left: 0;
     top: 0;
-    color: #FFF;
+    color: var(--primary);
+    text-shadow:
+        0 0 30px var(--primary),
+        0 0 20px var(--primary-light),
+        0 0 10px var(--primary-light);
     width: 100%;
     height: 100%;
     overflow: hidden;
     box-sizing: border-box;
     animation: animloader 6s linear infinite;
+    filter: drop-shadow(0 0 20px var(--accent-glow));
 }
 
 @keyframes animloader {
     0% {
         width: 0%;
     }
+
     100% {
         width: 100%;
     }
