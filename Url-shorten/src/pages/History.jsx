@@ -51,7 +51,7 @@ const History = () => {
                                 {loaded ?
                                     (
                                         history && history.length > 0 ? (
-                                        history.map((item, index) => (
+                                        [...history].reverse().map((item, index) => (
                                             <HistoryURL key={item.created || index} item={item} />
                                         ))
                                     ) : (
