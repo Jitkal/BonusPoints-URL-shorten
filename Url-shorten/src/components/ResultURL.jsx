@@ -11,10 +11,8 @@ const ResultURL=(props)=> {
             if (props.shortURL) {
                 const result = await findLink(props.shortURL);
                 setRealURL({shortURL: result.shortURL,longURL: result.longURL});
-                console.log("result URL:", result);
                 const recently = JSON.parse(sessionStorage.getItem('recently'))||[];
                 recently.push(result);
-                console.log(recently.length);
                 if (recently.length >=4) {
                     recently.shift();
                 }

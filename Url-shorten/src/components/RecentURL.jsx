@@ -14,7 +14,7 @@ const RecentURL=({recent})=> {
 
                     {
                             recent && recent.length > 0 ? (
-                                recent.map((item, index) => (
+                                [...recent].reverse().map((item, index) => (
 
                                     <div className='Item' key={index}>
                                         <div className='UrlText'>
