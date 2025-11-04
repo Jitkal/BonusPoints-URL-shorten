@@ -11,7 +11,7 @@ const RecentURL=({recent})=> {
         <div id='recent'>
                 <div className='Header'>
                     <h2>
-                        3 Recent Links
+                        Recent Links (latest 3 only)
                     </h2>
                 </div>
 

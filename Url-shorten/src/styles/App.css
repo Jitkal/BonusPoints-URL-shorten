@@ -1,56 +1,84 @@
-#App{
+#App {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 6rem 2rem 2rem 2rem;
     overflow: hidden;
-}
-a{
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    cursor: pointer;
-}
-a:hover {
-    color: #ffed4e;
-    text-decoration: underline;
+    min-height: 100vh;
+    background: transparent;
+    position: relative;
+    z-index: 1;
 }
 
-.Copy{
-    padding: 0.5rem 0.7rem;
-    border-radius: 12px;
-    border: none;
+@media (max-width: 768px) {
+    #App {
+        padding: 5rem 1rem 1rem 1rem;
+    }
+}
+
+a {
+    color: var(--primary-light);
+    text-decoration: none;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary);
+    text-decoration: none;
+    filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+
+.Copy {
+    padding: 0.6rem 0.9rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    transition: var(--transition);
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    color: rgba(255, 255, 255, 0.9);
-    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-light);
+    background: var(--glass-bg);
+    backdrop-filter: var(--blur-md);
+    position: relative;
 }
+
+
+.Copy:hover {
+    background: var(--glass-hover);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md), var(--shadow-glow);
+}
+
 
 .loader {
     width: 16px;
     height: 16px;
     border-radius: 50%;
     display: block;
-    margin:15px auto;
+    margin: 15px auto;
     position: relative;
-    background: #FFF;
-    box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+    background: var(--primary);
+    box-shadow: -24px 0 var(--primary), 24px 0 var(--primary);
     box-sizing: border-box;
     animation: shadowPulse 2s linear infinite;
 }
+
 @keyframes shadowPulse {
     33% {
-        background: #FFF;
-        box-shadow: -24px 0 #FF3D00, 24px 0 #FFF;
+        background: var(--primary);
+        box-shadow: -24px 0 var(--primary-light), 24px 0 var(--primary);
     }
+
     66% {
-        background: #FF3D00;
-        box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+        background: var(--primary-light);
+        box-shadow: -24px 0 var(--primary), 24px 0 var(--primary);
     }
+
     100% {
-        background: #FFF;
-        box-shadow: -24px 0 #FFF, 24px 0 #FF3D00;
+        background: var(--primary);
+        box-shadow: -24px 0 var(--primary), 24px 0 var(--primary-light);
     }
 }
