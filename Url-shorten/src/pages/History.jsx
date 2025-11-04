@@ -4,6 +4,7 @@ import HistoryURL from "../components/HistoryURL.jsx";
 import {loadHistory} from "../services/service.js";
 
 const History = () => {
+    const [loaded, setLoaded] = useState(false)
 
     const [history, setHistory] = useState(()=>{
         try{
@@ -22,7 +23,7 @@ const History = () => {
             const fullHistory=async ()=>{
                 const load=await loadHistory(JSON.parse(localStorage.getItem('history')) || [])
                 setHistory(load);
-
+                setLoaded(true)
                 return load;
             }
             // setHistory(JSON.parse(localStorage.getItem('history')) || []);
@@ -47,9 +48,24 @@ const History = () => {
                               </tr>
                           </thead>
                           <tbody>
-                                {history && history.map((item, index) => (
-                                    <HistoryURL key={item.created || index} item={item} />
-                                ))}
+                                {loaded ?
+                                    (
+                                        history && history.length > 0 ? (
+                                        history.map((item, index) => (
+                                            <HistoryURL key={item.created || index} item={item} />
+                                        ))
+                                    ) : (
+                                        <tr>
+                                            <td colSpan="4">No history found</td>
+                                        </tr>
+                                    )
+                                ) : (
+                                    <tr>
+                                        <td colSpan="4" style={{ textAlign: "center" }}>
+                                            <span className="loader"></span>
+                                        </td>
+                                    </tr>
+                                )}
                           </tbody>
                       </table>
                   </div>

@@ -11,12 +11,10 @@ import LinkTo from "./pages/LinkTo.jsx";
 
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
       <BrowserRouter>
           <Navbar/>
-          <div id='Home'>
+          <div id='App'>
               <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/history" element={<History />} />

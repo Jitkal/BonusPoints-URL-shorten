@@ -3,19 +3,17 @@ import { useParams, useLocation } from 'react-router-dom';
 import {findLink} from "../services/service.js";
 import db from "../firebase.js";
 import {doc, updateDoc, increment, query, collection, where} from "firebase/firestore";
+import '../styles/LinkTo.css'
 
 const LinkTo = () => {
     const hasRun = useRef(false);
     const location = useLocation();
-    console.log('location', location.pathname);
     useEffect( () => {
-        if (hasRun.current) return; // skip if already run
+        if (hasRun.current) return;
         hasRun.current = true;
         const fetchAndRedirect = async ()=> {
             try {
-                // console.log(`http://localhost:5173${location.pathname}`)
                 const link= await findLink(`http://localhost:5173${location.pathname}`);
-
                 const docRef = doc(db, "urls", link.id);
                 await updateDoc(docRef, { countClick: increment(1) });
                 window.location.href = link.longURL;
@@ -27,8 +25,8 @@ const LinkTo = () => {
     }, []);
 
     return (
-        <div>
-            Loading...
+        <div id='link-to'>
+            <span className="LinkToLoader">Loading</span>
         </div>
     );
 };

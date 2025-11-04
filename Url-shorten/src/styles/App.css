@@ -1,6 +1,8 @@
-#Home{
-    padding: 2rem;
-    padding-top: 6rem;
+#App{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem 2rem 2rem;
     overflow: hidden;
 }
 a{
@@ -11,6 +13,19 @@ a{
 a:hover {
     color: #ffed4e;
     text-decoration: underline;
+}
+
+.Copy{
+    padding: 0.5rem 0.7rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .loader {

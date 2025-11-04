@@ -24,26 +24,24 @@ const getBaseURL = (longURL) => {
     }
 };
 
-    const makeShorten = async (longURL,setResult) => {
-        try {
-            const shortURL = `${await getBaseURL(longURL)}/${generateShortCode()}`;
-            const newSave = {
-                longURL: longURL,
-                shortURL: shortURL,
-                countClick: 0,
-                created: Date.now(),
-            };
-            await addDoc(collection(db, "urls"), newSave);
-
-            const saved=JSON.parse(localStorage.getItem('history')) || []
-            saved.push({shortURL: shortURL});
-            localStorage.setItem('history', JSON.stringify(saved));
-            setResult(shortURL)
-        }catch (error) {
-            console.log('firebase error',error);
-        }
-
+const makeShorten = async (longURL,setResult) => {
+    try {
+        const shortURL = `${await getBaseURL(longURL)}/${generateShortCode()}`;
+        const newSave = {
+            longURL: longURL,
+            shortURL: shortURL,
+            countClick: 0,
+            created: Date.now(),
+        };
+        await addDoc(collection(db, "urls"), newSave);
+        const saved=JSON.parse(localStorage.getItem('history')) || []
+        saved.push({shortURL: shortURL});
+        localStorage.setItem('history', JSON.stringify(saved));
+        setResult(shortURL)
+    }catch (error) {
+        console.log('firebase error',error);
     }
+}
 
 const ShortenURL=(props)=> {
     const [result, setResult] = useState()
@@ -74,7 +72,6 @@ const ShortenURL=(props)=> {
                         make it shorter
                     </button>
                 </div>
-            
                 <ResultURL shortURL={result}/>
             </div>
         </div>

@@ -14,9 +14,9 @@ export const findLink=async (shortURL)=>{
             return null;
         }
 
-        querySnapshot.forEach((doc) => {
-            console.log('Found URL:', doc.data());
-        });
+        // querySnapshot.forEach((doc) => {
+        //     console.log('Found URL:', doc.data());
+        // });
 
         const docSnap = querySnapshot.docs[0];
         return {
@@ -40,6 +40,3 @@ export const loadHistory=async (history)=>{
     return fullHistory
 
 }
-
-
-// export default {findLink, loadHistory};
