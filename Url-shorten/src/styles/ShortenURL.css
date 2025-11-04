@@ -48,7 +48,6 @@
 .Header {
     text-align: center;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
     position: relative;
 }
 

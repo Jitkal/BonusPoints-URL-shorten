@@ -21,7 +21,8 @@
     transition: var(--transition);
     box-shadow: var(--shadow-md);
     position: relative;
-    overflow: hidden;border-color: var(--primary);
+    overflow: hidden;
+    border-color: var(--accent-glow);
 }
 
 

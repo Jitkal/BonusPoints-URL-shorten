@@ -49,7 +49,6 @@ const ShortenURL=(props)=> {
     useEffect(() => {
         const urlRegex = /^(https?:\/\/)[^\s/$.?#].[^\s]*$/i;
         if (props.longUrl && urlRegex.test(props.longUrl)) {
-            console.log(`valid URL`);
             setIsCorrectURL(null);
         } else {
             setIsCorrectURL('Please enter a valid URL starting with http:// or https://');
