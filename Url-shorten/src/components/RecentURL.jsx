@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
 import '../styles/RecentURL.css'
-import ResultURL from "./ResultURL.jsx";
-import { collection, addDoc } from "firebase/firestore";
-import db from "../firebase.js";
-import HistoryURL from "./HistoryURL.jsx";
 import CopyButton from "./CopyButton.jsx";
 
 const RecentURL=({recent})=> {

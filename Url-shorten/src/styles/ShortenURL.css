@@ -21,7 +21,6 @@
     width: 100%;
     max-width: 600px;
     border: 1px solid var(--glass-border);
-    box-shadow: var(--shadow-lg);
     transition: var(--transition);
     position: relative;
     overflow: hidden;

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import '../styles/ResultURL.css'
-import db from "../firebase.js";
-import { collection, query, where,getDocs } from "firebase/firestore";
 import {findLink} from "../services/service.js";
 import CopyButton from "./CopyButton.jsx";
 
