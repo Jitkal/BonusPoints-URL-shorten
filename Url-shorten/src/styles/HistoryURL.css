@@ -1,0 +1,59 @@
+.HistoryURL{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.TableContainer{
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    animation: fadeIn 0.8s ease-out;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+thead{
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+tbody tr:hover{
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+th{
+    padding: 1.5rem 1.5rem;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+td{
+    padding: 0.5rem 1.5rem;
+}
+.UrlText{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.UrlText a{
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    cursor: pointer;
+}
+.UrlText a:hover {
+    color: #ffed4e;
+    text-decoration: underline;
+}
+
+.Clear{
+    text-transform: uppercase;
+}

@@ -1,0 +1,19 @@
+.InputWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1em 0em;;
+}
+.ResultURL{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:89%;
+    padding: 1rem 1rem 1rem 3rem;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}

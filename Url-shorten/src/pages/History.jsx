@@ -1,0 +1,83 @@
+import React, {useState,useEffect} from 'react';
+import '../styles/HistoryURL.css'
+import HistoryURL from "../components/HistoryURL.jsx";
+import {loadHistory} from "../services/service.js";
+
+const History = () => {
+    const [loaded, setLoaded] = useState(false)
+
+    const [history, setHistory] = useState(()=>{
+        try{
+            const saved=JSON.parse(localStorage.getItem('history')|| [])
+            return saved;
+
+        }catch(error){
+            console.log('error to get history',error);
+            return [];
+        }
+
+    });
+
+    useEffect(()=>{
+        try{
+            const fullHistory=async ()=>{
+                const load=await loadHistory(JSON.parse(localStorage.getItem('history')) || [])
+                setHistory(load);
+                setLoaded(true)
+                return load;
+            }
+            // setHistory(JSON.parse(localStorage.getItem('history')) || []);
+            // console.log('fullHistory',fullHistory());
+            fullHistory()
+        }catch(error){
+            console.log('error to get history',error);
+            return [];
+        }
+    }, [])
+  return (
+          <div className='HistoryURL'>
+              <h1>URL History</h1>
+                  <div className='TableContainer'>
+                      <table>
+                          <thead>
+                              <tr>
+                                  <th>Original URL</th>
+                                  <th>Short URL</th>
+                                  <th>Copy Clicks</th>
+                                  <th>Created</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                                {loaded ?
+                                    (
+                                        history && history.length > 0 ? (
+                                        history.map((item, index) => (
+                                            <HistoryURL key={item.created || index} item={item} />
+                                        ))
+                                    ) : (
+                                        <tr>
+                                            <td colSpan="4">No history found</td>
+                                        </tr>
+                                    )
+                                ) : (
+                                    <tr>
+                                        <td colSpan="4" style={{ textAlign: "center" }}>
+                                            <span className="loader"></span>
+                                        </td>
+                                    </tr>
+                                )}
+                          </tbody>
+                      </table>
+                  </div>
+              <button
+                  className='Clear'
+                  onClick={()=>{localStorage.removeItem('history'); setHistory([])}}
+              >
+                  clear history
+              </button>
+
+          </div>
+  );
+};
+
+export default History;

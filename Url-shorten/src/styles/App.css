@@ -1,0 +1,56 @@
+#App{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem 2rem 2rem;
+    overflow: hidden;
+}
+a{
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover {
+    color: #ffed4e;
+    text-decoration: underline;
+}
+
+.Copy{
+    padding: 0.5rem 0.7rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.loader {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: block;
+    margin:15px auto;
+    position: relative;
+    background: #FFF;
+    box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+    box-sizing: border-box;
+    animation: shadowPulse 2s linear infinite;
+}
+@keyframes shadowPulse {
+    33% {
+        background: #FFF;
+        box-shadow: -24px 0 #FF3D00, 24px 0 #FFF;
+    }
+    66% {
+        background: #FF3D00;
+        box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+    }
+    100% {
+        background: #FFF;
+        box-shadow: -24px 0 #FFF, 24px 0 #FF3D00;
+    }
+}
