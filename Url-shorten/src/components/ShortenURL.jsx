@@ -45,7 +45,16 @@ const makeShorten = async (longURL,setResult) => {
 
 const ShortenURL=(props)=> {
     const [result, setResult] = useState()
-
+    const [isCorrectURL, setIsCorrectURL] = useState(null)
+    useEffect(() => {
+        const urlRegex = /^(https?:\/\/)[^\s/$.?#].[^\s]*$/i;
+        if (props.longUrl && urlRegex.test(props.longUrl)) {
+            console.log(`valid URL`);
+            setIsCorrectURL(null);
+        } else {
+            setIsCorrectURL('Please enter a valid URL starting with http:// or https://');
+        }
+    }, [props.longUrl]);
     return (
         <div className='Card'>
             <div className='Container'>
@@ -53,22 +62,33 @@ const ShortenURL=(props)=> {
                     <h2>
                         URL Shortener
                     </h2>
-                    <p>Transform long URLs into short, shareable links</p>
+                    <p>Transform long URLs into short links</p>
                 </div>
 
                 <div>
                     <div className='InputWrapper'>
                         <div>Enter your URL</div>
                         <input
-                            type="text"
+                            type="url"
                             value={props.longUrl}
                             onChange={(e) => props.setLongUrl(e.target.value)}
                             placeholder="https://example.com/very/long/url"
                         />
+                        {
+                            isCorrectURL?
+                                <div className='error'>
+                                    {isCorrectURL}
+                                </div>
+                                :<div/>
+                        }
                     </div>
 
 
-                    <button type="submit" onClick={()=>makeShorten(props.longUrl,setResult)}>
+                    <button
+                        type="submit"
+                        disabled={isCorrectURL}
+                        onClick={()=>makeShorten(props.longUrl,setResult)}
+                    >
                         make it shorter
                     </button>
                 </div>

@@ -107,6 +107,10 @@ input::placeholder {
     color: var(--text-tertiary);
 }
 
+.error{
+    color: red;
+}
+
 button {
     padding: 1.1rem 2rem;
     border-radius: var(--radius-md);
